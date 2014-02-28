@@ -1,3 +1,4 @@
 export(ping)
+export(ping2)
 import(audio)
 import(stringr)

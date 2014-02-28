@@ -98,6 +98,29 @@ play_file <- function(fname) {
   }
 }
 
+ping2 <- function(sound=1, path=NULL, expr=NULL) {
+  expr
+  sounds <- c(ping = "microwave_ping_mono.wav",
+              coin = "smb_coin.wav",
+              fanfare = "victory_fanfare_mono.wav",
+              complete = "work_complete.wav",
+              treasure = "new_item.wav",
+              ready = "ready_master.wav",
+              shotgun = "shotgun.wav",
+              mario = "smb_stage_clear.wav",
+              wilhelm = "wilhelm.wav",
+              facebook = "facebook.wav")
+  sound_fname <- sounds[sound]
+  if(is.na(sound_fname) || length(sound_fname) != 1) {
+    sound_fname <- sample(sounds, size=1)
+  }
+  if(!is.null(path)){
+    sound_path <- path    
+  } else {
+    sound_path <- system.file(paste("sounds/", sound_fname, sep=""), package="pingr")
+  }
+  play_file(sound_path)
+}
 
 # play_vlc_pid <- function(fname) {
 #   system(paste("vlc -Idummy --play-and-exit", fname), 
